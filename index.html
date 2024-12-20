@@ -3,27 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Percentage Calculator</title>
+    <title>Percentage Calculators</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Percentage Calculator</h1>
-        <label for="initialValue">Starting Value (A):</label>
-        <input type="number" id="initialValue" placeholder="Enter starting value">
-        
-        <label for="percentage">Percentage Increase (Y%):</label>
-        <input type="number" id="percentage" placeholder="Enter percentage">
-        
-        <label for="steps">Number of Steps:</label>
-        <input type="number" id="steps" placeholder="Enter number of steps">
-        
-        <button id="calculateBtn">Calculate</button>
+        <h1>Percentage Calculators</h1>
 
-        <h2>Results:</h2>
-        <pre id="results"></pre>
+        <!-- 1. Find Percentage of Y -->
+        <div class="calculator">
+            <h2>Find Percentage of Y</h2>
+            <label for="valueX">Value X:</label>
+            <input type="number" id="valueX" placeholder="Enter X">
+            <label for="valueY">Value Y:</label>
+            <input type="number" id="valueY" placeholder="Enter Y">
+            <button onclick="calculatePercentage()">Calculate</button>
+            <p id="percentageResult"></p>
+        </div>
+
+        <!-- 2. Find Percentage Change -->
+        <div class="calculator">
+            <h2>Percentage Change from X to Y</h2>
+            <label for="oldValue">Old Value (X):</label>
+            <input type="number" id="oldValue" placeholder="Enter Old Value">
+            <label for="newValue">New Value (Y):</label>
+            <input type="number" id="newValue" placeholder="Enter New Value">
+            <button onclick="calculateChange()">Calculate</button>
+            <p id="changeResult"></p>
+        </div>
+
+        <!-- 3. Add Percentage of X% to Y -->
+        <div class="calculator">
+            <h2>Add X% to Y</h2>
+            <label for="percentage">Percentage (X%):</label>
+            <input type="number" id="percentage" placeholder="Enter Percentage">
+            <label for="baseValue">Base Value (Y):</label>
+            <input type="number" id="baseValue" placeholder="Enter Base Value">
+            <button onclick="calculateAddition()">Calculate</button>
+            <p id="additionResult"></p>
+        </div>
     </div>
-    
+
     <script src="app.js"></script>
 </body>
 </html>
