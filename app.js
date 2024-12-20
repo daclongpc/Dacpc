@@ -1,20 +1,43 @@
-document.getElementById('calculateBtn').addEventListener('click', function() {
-    const initialValue = parseFloat(document.getElementById('initialValue').value);
-    const percentage = parseFloat(document.getElementById('percentage').value);
-    const steps = parseInt(document.getElementById('steps').value);
+// Calculate Percentage of Y
+function calculatePercentage() {
+    const x = parseFloat(document.getElementById('valueX').value);
+    const y = parseFloat(document.getElementById('valueY').value);
 
-    if (isNaN(initialValue) || isNaN(percentage) || isNaN(steps) || steps <= 0) {
-        alert("Please enter valid inputs!");
+    if (isNaN(x) || isNaN(y) || y === 0) {
+        document.getElementById('percentageResult').innerText = "Please enter valid numbers, and Y should not be 0.";
         return;
     }
 
-    let results = "";
-    let currentValue = initialValue;
-    
-    for (let i = 1; i <= steps; i++) {
-        currentValue += currentValue * (percentage / 100);
-        results += `Step ${i}: ${currentValue.toFixed(2)}\n`;
+    const percentage = (x / y) * 100;
+    document.getElementById('percentageResult').innerText = `X is ${percentage.toFixed(2)}% of Y.`;
+}
+
+// Calculate Percentage Change
+function calculateChange() {
+    const oldValue = parseFloat(document.getElementById('oldValue').value);
+    const newValue = parseFloat(document.getElementById('newValue').value);
+
+    if (isNaN(oldValue) || isNaN(newValue)) {
+        document.getElementById('changeResult').innerText = "Please enter valid numbers.";
+        return;
     }
-    
-    document.getElementById('results').textContent = results;
-});
+
+    const change = ((newValue - oldValue) / oldValue) * 100;
+    document.getElementById('changeResult').innerText =
+        `The percentage change from X to Y is ${change.toFixed(2)}%.`;
+}
+
+// Add X% to Y
+function calculateAddition() {
+    const percentage = parseFloat(document.getElementById('percentage').value);
+    const baseValue = parseFloat(document.getElementById('baseValue').value);
+
+    if (isNaN(percentage) || isNaN(baseValue)) {
+        document.getElementById('additionResult').innerText = "Please enter valid numbers.";
+        return;
+    }
+
+    const result = baseValue + (baseValue * (percentage / 100));
+    document.getElementById('additionResult').innerText = 
+        `Adding ${percentage}% to Y results in ${result.toFixed(2)}.`;
+}
